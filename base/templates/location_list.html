@@ -1,0 +1,15 @@
+{% extends "base.html"%}
+
+{% block title %}Locations{% endblock%}
+
+{% block body%}
+
+<a href="{% url 'index' %}">Home</a>
+Locations here
+<ul>
+{% for location in locations %}
+    <li>{{ location }}</li>
+
+{% endfor %}
+</ul>
+{% endblock%}
