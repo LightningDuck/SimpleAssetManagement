@@ -27,6 +27,15 @@ class Location (models.Model):
     def __str__(self):
         return "{} {}".format("Location at ", self.description)
 
+
+class Organization(models.Model):
+
+    location = models.ForeignKey(Location, null=True)
+    name = models.CharField(max_length=40)
+
+    def __str__(self):
+        return "{}".format(self.name)
+
 class AssetDescription(models.Model):
 
 
@@ -39,6 +48,9 @@ class Asset (models.Model):
 
     description = models.ForeignKey(AssetDescription, null=True)
     location = models.ForeignKey(Location, null=True)
+    owningOrganization = models.ForeignKey(Organization)
+    controllingOrganization = models.ForeignKey(Organization)
+
 
     def __str__(self):
         return "{}".format(self.description)
